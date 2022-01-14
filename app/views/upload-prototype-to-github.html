@@ -1,0 +1,43 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Upload your prototype to GitHub
+      </h1>
+      <div class="govuk-form-group">
+        <img alt="" src="../assets/images/upload-prototype-to-github.png" width="100%">
+    </div>
+      <p>
+        If you're using GitHub Desktop:
+      </p>
+
+      <ol class="govuk-list govuk-list--number">
+        <li>
+          Select <strong>Publish Repository</strong>.
+        </li>
+        <li>
+          Untick <strong>Keep this code private</strong>, as we need others to be able to collaborate on it.        </li>
+        <li>
+          Choose <strong>ministryofjustice</strong> for <strong>Organisation</strong>.         
+        </li>
+        <li>
+          Select <strong>Publish Repository</strong>.
+        </li>
+      </ol>
+
+      <p>
+        Your prototype code is now on GitHub, which means you can <a href="index.html">publish your prototype on the web</a> using the MOJ Cloud Platform service.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

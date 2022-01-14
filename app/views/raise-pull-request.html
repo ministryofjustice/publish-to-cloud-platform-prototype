@@ -1,0 +1,98 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Raise a pull request
+      </h1>
+      <p>
+        Pull requests (PRs) let you tell others about changes you've pushed to a branch in a repository on GitHub.
+      </p>
+      <p>
+        After you have answered all the questions, the cloud-platform CLI will create several files in a folder called:
+      </p>
+      <p>
+        <code>
+          namespaces/live.cloud-platform.service.justice.gov.uk/[name you chose]
+        </code>
+      </p>
+      <p>
+        Create a new branch, <code>git add</code> the new folder and then raise a PR.
+      </p>
+      <p>
+        Once a member of the Cloud Platform team has approved your PR, merge it.
+      </p>
+      <p>
+        When you merge the PR, the <a href="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/other-topics/apply-pipeline.html#apply-pipeline">Apply Pipeline</a> will create your namespace and GitHub repository.
+      </p>
+
+      <h2 class="govuk-heading-l">
+        Seeing your published prototype
+      </h2>
+      <p>
+        There are a few things to be aware of, concerning your prototype kit site:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          It can take around 5 minutes for your prototype to be published
+        </li>
+        <li>
+          The first time it tries to publish it will fail. You’ll need to publish a second time to complete the set up.
+          <div class="govuk-inset-text">
+            You don’t have to do this - when you push changes to the repository, they will be deployed successfully - but you may want to confirm that your site works before making any changes.
+          </div>
+        </li>
+        <li>
+          The GitHub repository is created with <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection</a> applied to the default <code>main</code> branch. If you don’t want this, edit the <code>github-repo.tf</code> file in your namespace folder in the environments repository, and remove this stanza:</li>
+      </ul>
+      <p>
+        <pre><code>resource "github_branch_protection" "default" {
+  repository_id          = github_repository.prototype.id
+  pattern                = "main"
+  enforce_admins         = true
+  require_signed_commits = true
+}</code></pre>
+      </p>
+      <p>
+          If you use the GitHub UI to disable branch protection, the<a href="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/other-topics/apply-pipeline.html#apply-pipeline"> Apply Pipeline</a> will re-enable it shortly afterwards.
+      </p>
+      <p>
+        The only way to permanently disable it is to remove it from the terraform source code.
+      </p>
+      <h2 class="govuk-heading-l">
+        Deleting your published prototype
+      </h2>
+      <p>
+        When you no longer need your prototype to be published:
+      </p>
+      <div class="govuk-inset-text">
+        These steps are to decommission the hosting infrastructure that your prototype is running on. This will not delete your prototype source code.
+      </div>
+  
+      <ol class="govuk-list govuk-list--number">
+        <li>
+          raise a PR removing your namespace folder from the <code>cloud-platform-environments</code> repository, and wait for it to be approved by a member of the Cloud Platform team
+        </li>
+        <li>
+          immediately before you merge the PR use the GitHub web interface to delete your repository
+        </li>
+        <li>
+          merge the PR        
+        </li>
+      </ol>
+      <p>
+        Your namespace will be removed from the Cloud Platform.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

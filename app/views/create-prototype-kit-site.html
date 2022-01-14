@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Create your prototype kit site
+      </h1>
+      <p>
+        In the Cloud Platform CLI run:
+      </p>
+      <p>
+        <code>
+          $ cloud-platform environment prototype create
+        </code>
+      </p>
+      <p>
+        You’ll be asked to name your prototype.
+      </p>
+      <p>
+        This name will be used as:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          the<a href="https://user-guide.cloud-platform.service.justice.gov.uk/documentation/getting-started/env-create.html#creating-a-cloud-platform-environment"> namespace</a> which will be created on the Cloud Platform
+        </li>
+        <li>
+          the domain name your prototype kit will be published to
+        </li>
+      </ul>
+
+      <p>
+        For example, if you choose <code>my-prototype</code> as the name:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          you will create a namespace on the Cloud Platform called <code>my-prototype</code>
+        </li>
+        <li>
+          your prototype kit website will be available at the URL: <br><a href="https://my-prototype.apps.live.cloud-platform.service.justice.gov.uk">https://my-prototype.apps.live.cloud-platform.service.justice.gov.uk</a>
+        </li>
+      </ul>
+
+      <p>
+        You will also be asked to provide the name of your GitHub repository that holds your design kit. This will be used to add the automation you need to deploy changes to your prototype.
+      </p>
+
+      <p>
+        <a href="raise-pull-request.html">Next (raise a pull request)</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}
